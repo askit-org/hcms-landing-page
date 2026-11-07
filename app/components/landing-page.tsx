@@ -29,7 +29,7 @@ import InteractiveWorkflowExplorer from "./InteractiveWorkflowExplorer";
 import LandingPricingSection from "./LandingPricingSection";
 
 const appUrl = (
-  process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"
+  process.env.NEXT_PUBLIC_APP_URL || "https://hcms.askitstudio.in"
 ).replace(/\/$/, "");
 const signupUrl = `${appUrl}/signup`;
 const loginUrl = `${appUrl}/login`;
