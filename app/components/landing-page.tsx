@@ -39,11 +39,13 @@ export default function LandingPage() {
 
   useEffect(() => {
     const saved = window.localStorage.getItem('hcms-theme');
-    if (saved === 'light' || saved === 'dark') {
-      setTheme(saved);
-      document.documentElement.setAttribute('data-theme', saved);
+    const initialTheme = saved === 'light' || saved === 'dark' ? saved : 'dark';
+    setTheme(initialTheme);
+    document.documentElement.setAttribute('data-theme', initialTheme);
+    if (initialTheme === 'dark') {
+      document.documentElement.classList.add('dark');
     } else {
-      document.documentElement.setAttribute('data-theme', 'dark');
+      document.documentElement.classList.remove('dark');
     }
   }, []);
 
@@ -52,6 +54,11 @@ export default function LandingPage() {
     setTheme(next);
     window.localStorage.setItem('hcms-theme', next);
     document.documentElement.setAttribute('data-theme', next);
+    if (next === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
   };
 
   const faqs = [
@@ -112,7 +119,6 @@ export default function LandingPage() {
               Live Rx Sandbox
             </a>
             <a href="#workflows" className="hover:text-teal-500 transition-colors">OPD & IPD Workflows</a>
-            <a href="#calculator" className="hover:text-teal-500 transition-colors">Practice Impact</a>
             <a href="#pricing" className="hover:text-teal-500 transition-colors">Pricing</a>
             <a href="#faq" className="hover:text-teal-500 transition-colors">FAQ</a>
           </nav>
@@ -176,7 +182,6 @@ export default function LandingPage() {
                 <a href="#features" onClick={() => setMobileMenuOpen(false)} className="p-2 rounded-lg hover:bg-white/5">Features</a>
                 <a href="#demo" onClick={() => setMobileMenuOpen(false)} className="p-2 rounded-lg hover:bg-white/5 text-teal-500">Live Rx Sandbox</a>
                 <a href="#workflows" onClick={() => setMobileMenuOpen(false)} className="p-2 rounded-lg hover:bg-white/5">OPD & IPD Workflows</a>
-                <a href="#calculator" onClick={() => setMobileMenuOpen(false)} className="p-2 rounded-lg hover:bg-white/5">Practice Impact</a>
                 <a href="#pricing" onClick={() => setMobileMenuOpen(false)} className="p-2 rounded-lg hover:bg-white/5">Pricing</a>
                 <a href="#faq" onClick={() => setMobileMenuOpen(false)} className="p-2 rounded-lg hover:bg-white/5">FAQ</a>
 
@@ -456,18 +461,18 @@ export default function LandingPage() {
 
       {/* ─── FINAL CALL-TO-ACTION BANNER ─── */}
       <section className="py-20 px-4 md:px-8 max-w-5xl mx-auto text-center relative z-10">
-        <div className="rounded-3xl p-8 md:p-14 bg-gradient-to-r from-teal-950/60 via-slate-900 to-emerald-950/60 border-2 border-teal-500/40 backdrop-blur-2xl shadow-2xl shadow-teal-500/20 text-white">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight mb-4 font-display">
+        <div className="rounded-3xl p-8 md:p-14 bg-gradient-to-br from-teal-50 via-white to-emerald-50 dark:from-teal-950/60 dark:via-slate-900 dark:to-emerald-950/60 border-2 border-teal-500/30 dark:border-teal-500/40 backdrop-blur-2xl shadow-xl dark:shadow-2xl dark:shadow-teal-500/20 text-[var(--text-primary)] dark:text-white transition-colors">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight mb-4 font-display text-[var(--text-primary)] dark:text-white">
             Modernize Your Clinic in Under 60 Seconds
           </h2>
-          <p className="text-sm md:text-base text-slate-300 max-w-xl mx-auto mb-8">
+          <p className="text-sm md:text-base text-[var(--text-secondary)] dark:text-slate-300 max-w-xl mx-auto mb-8">
             Experience the speed of an offline-ready, multi-lingual clinical OS. Start your 15-day evaluation pass today with zero auto-debit commitments.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href={signupUrl}
-              className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-400 hover:to-teal-500 text-white font-extrabold text-sm md:text-base flex items-center justify-center gap-2 shadow-xl shadow-teal-500/30 transition-all"
+              className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-400 hover:to-teal-500 text-white font-extrabold text-sm md:text-base flex items-center justify-center gap-2 shadow-xl shadow-teal-500/30 hover:scale-[1.02] active:scale-[0.98] transition-all"
             >
               Start 15-Day Trial (₹22)
               <ArrowRight size={18} />
@@ -475,7 +480,7 @@ export default function LandingPage() {
 
             <a
               href={loginUrl}
-              className="w-full sm:w-auto px-7 py-4 rounded-xl bg-white/10 hover:bg-white/15 text-white font-bold text-sm border border-white/15 transition-all text-center"
+              className="w-full sm:w-auto px-7 py-4 rounded-xl bg-white hover:bg-slate-50 dark:bg-white/10 dark:hover:bg-white/15 text-[var(--text-primary)] dark:text-white font-bold text-sm border border-slate-200 dark:border-white/15 transition-all text-center shadow-sm"
             >
               Sign In to Existing Clinic
             </a>

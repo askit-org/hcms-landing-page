@@ -103,6 +103,11 @@ export default function Hero3DCanvas() {
       const centerY = displayHeight / 2;
 
       // Transform points with 3D rotation
+      const isDark =
+        typeof document !== 'undefined' &&
+        (document.documentElement.getAttribute('data-theme') === 'dark' ||
+          document.documentElement.classList.contains('dark'));
+
       const projected = points.map((p, index) => {
         p.x += p.vx;
         p.y += p.vy;
@@ -148,7 +153,9 @@ export default function Hero3DCanvas() {
 
           if (dist < 105) {
             const alpha = (1 - dist / 105) * 0.35 * Math.min(p1.scale, p2.scale);
-            ctx.strokeStyle = `rgba(20, 184, 166, ${alpha})`;
+            ctx.strokeStyle = isDark
+              ? `rgba(20, 184, 166, ${alpha})`
+              : `rgba(13, 148, 136, ${Math.min(0.55, alpha * 1.5)})`;
             ctx.beginPath();
             ctx.moveTo(p1.px, p1.py);
             ctx.lineTo(p2.px, p2.py);
@@ -163,14 +170,18 @@ export default function Hero3DCanvas() {
         const alpha = Math.max(0.2, Math.min(1, p.scale * 1.1));
         const r = Math.max(1.8, 3.2 * p.scale);
 
-        ctx.fillStyle = `rgba(45, 212, 191, ${alpha})`;
+        ctx.fillStyle = isDark
+          ? `rgba(45, 212, 191, ${alpha})`
+          : `rgba(15, 118, 110, ${Math.min(0.85, alpha * 1.3)})`;
         ctx.beginPath();
         ctx.arc(p.px, p.py, r, 0, Math.PI * 2);
         ctx.fill();
 
         // Crisp vector ring for accent nodes
         if (p.index % 4 === 0) {
-          ctx.strokeStyle = `rgba(13, 148, 136, ${alpha * 0.6})`;
+          ctx.strokeStyle = isDark
+            ? `rgba(13, 148, 136, ${alpha * 0.6})`
+            : `rgba(13, 148, 136, ${Math.min(0.7, alpha * 1.2)})`;
           ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.arc(p.px, p.py, r + 3, 0, Math.PI * 2);

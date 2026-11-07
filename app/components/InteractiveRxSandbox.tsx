@@ -321,25 +321,25 @@ export default function InteractiveRxSandbox({ appSignupUrl }: { appSignupUrl: s
   };
 
   return (
-    <div id="demo" className="w-full max-w-6xl mx-auto rounded-3xl p-5 md:p-8 border border-teal-500/25 bg-slate-900/90 backdrop-blur-2xl shadow-2xl shadow-teal-500/10 text-slate-100 font-sans">
+    <div id="demo" className="w-full max-w-6xl mx-auto rounded-3xl p-5 md:p-8 border border-teal-500/25 bg-[var(--card-bg)] backdrop-blur-2xl shadow-xl text-[var(--text-primary)] font-sans">
       {/* Top Banner */}
-      <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 pb-6 mb-6 border-b border-white/10">
+      <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 pb-6 mb-6 border-b border-[var(--border)]">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-300 text-xs font-semibold mb-2">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-600 dark:text-teal-300 text-xs font-semibold mb-2">
             <Sparkles size={13} /> Interactive Clinic Software Sandbox
           </div>
-          <h3 className="text-xl md:text-2xl font-black text-white tracking-tight font-display">
+          <h3 className="text-xl md:text-2xl font-black text-[var(--text-primary)] tracking-tight font-display">
             Try the Ultra-Fast E-Prescription Builder
           </h3>
-          <p className="text-xs md:text-sm text-slate-400 mt-1">
+          <p className="text-xs md:text-sm text-[var(--text-secondary)] mt-1">
             Exact UI from the HCMS app: slot frequency (Morning, Afternoon, Night), dosage measure, and multi-lingual clinical instruction checkboxes.
           </p>
         </div>
 
         {/* Global Print Language Picker */}
-        <div className="flex items-center gap-1.5 p-1.5 rounded-xl bg-slate-800/95 border border-white/10 shadow-inner">
-          <span className="text-xs text-slate-400 px-2 flex items-center gap-1.5 font-medium">
-            <Languages size={14} className="text-teal-400" /> Print Language:
+        <div className="flex items-center gap-1.5 p-1.5 rounded-xl bg-[var(--surface-1)] border border-[var(--border)] shadow-sm">
+          <span className="text-xs text-[var(--text-secondary)] px-2 flex items-center gap-1.5 font-medium">
+            <Languages size={14} className="text-teal-600 dark:text-teal-400" /> Print Language:
           </span>
           {(['en', 'hi', 'mr'] as const).map((lang) => (
             <button
@@ -348,7 +348,7 @@ export default function InteractiveRxSandbox({ appSignupUrl }: { appSignupUrl: s
               className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all ${
                 activePrintLang === lang
                   ? 'bg-teal-600 text-white shadow-md shadow-teal-600/30'
-                  : 'text-slate-400 hover:text-white hover:bg-white/5'
+                  : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface-2)]'
               }`}
             >
               {lang === 'en' ? 'English' : lang === 'hi' ? 'हिंदी (Hindi)' : 'मराठी (Marathi)'}
@@ -358,13 +358,13 @@ export default function InteractiveRxSandbox({ appSignupUrl }: { appSignupUrl: s
       </div>
 
       {/* Top Patient Consultation Selector */}
-      <div className="mb-6 p-4 rounded-2xl bg-white/5 border border-white/10">
+      <div className="mb-6 p-4 rounded-2xl bg-[var(--surface-1)] border border-[var(--border)]">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 mb-3">
-          <span className="text-xs font-bold uppercase tracking-wider text-teal-400 flex items-center gap-1.5">
+          <span className="text-xs font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400 flex items-center gap-1.5">
             <User size={14} /> Active Consultation
           </span>
-          <span className="text-[11px] text-slate-400">
-            Attending Physician: <strong className="text-white">Dr. Nihal Momin</strong> (MBBS, DNB)
+          <span className="text-[11px] text-[var(--text-secondary)]">
+            Attending Physician: <strong className="text-[var(--text-primary)]">Dr. Nihal Momin</strong> (MBBS, DNB)
           </span>
         </div>
 
@@ -377,20 +377,20 @@ export default function InteractiveRxSandbox({ appSignupUrl }: { appSignupUrl: s
                 onClick={() => setActivePatientIndex(idx)}
                 className={`text-left p-3 rounded-xl border transition-all ${
                   isSelected
-                    ? 'bg-teal-500/20 border-teal-500 text-white shadow-sm ring-1 ring-teal-500/50'
-                    : 'bg-slate-800/50 border-white/5 text-slate-400 hover:bg-white/5 hover:text-slate-200'
+                    ? 'bg-teal-500/10 dark:bg-teal-500/20 border-teal-500 text-[var(--text-primary)] shadow-sm ring-1 ring-teal-500/50'
+                    : 'bg-[var(--surface-2)] border-[var(--border)] text-[var(--text-secondary)] hover:bg-[var(--surface-0)] hover:text-[var(--text-primary)]'
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <div className="font-bold text-sm text-white">{p.name}</div>
-                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-white/10 text-slate-300">
+                  <div className="font-bold text-sm text-[var(--text-primary)]">{p.name}</div>
+                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-[var(--surface-0)] border border-[var(--border)] text-[var(--text-secondary)] font-medium">
                     {p.age}Y / {p.gender}
                   </span>
                 </div>
-                <div className="text-[11px] text-teal-300/90 truncate mt-0.5 font-medium">
+                <div className="text-[11px] text-teal-700 dark:text-teal-300/90 truncate mt-0.5 font-medium">
                   {p.diagnosis}
                 </div>
-                <div className="text-[10px] text-slate-400 mt-1 flex items-center justify-between">
+                <div className="text-[10px] text-[var(--text-muted)] mt-1 flex items-center justify-between">
                   <span>UHID: {p.uhid}</span>
                   <span>{p.phone}</span>
                 </div>
@@ -404,44 +404,44 @@ export default function InteractiveRxSandbox({ appSignupUrl }: { appSignupUrl: s
         {/* Left Side: Real Software Prescription Form */}
         <div className="lg:col-span-7 flex flex-col gap-4 text-left relative" ref={popoverRef}>
           {/* Main PRESCRIPTION Form Container (Mirrors Screenshots) */}
-          <div className="p-4 md:p-5 rounded-2xl bg-slate-900/95 border border-white/10 flex flex-col gap-4 shadow-xl">
+          <div className="p-4 md:p-5 rounded-2xl bg-[var(--surface-0)] border border-[var(--border)] flex flex-col gap-4 shadow-md">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-300">
+              <span className="text-xs font-bold uppercase tracking-wider text-[var(--text-primary)]">
                 PRESCRIPTION
               </span>
-              <span className="text-[11px] text-teal-400 font-medium">
+              <span className="text-[11px] text-teal-600 dark:text-teal-400 font-medium">
                 {medRows.length} active medicines
               </span>
             </div>
 
             {/* Medicine Search Bar */}
             <div className="relative">
-              <Search size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+              <Search size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--text-muted)]" />
               <input
                 type="text"
                 placeholder="Search medicine to add..."
                 value={catalogQuery}
                 onChange={(e) => setCatalogQuery(e.target.value)}
-                className="w-full pl-9 pr-4 py-2.5 rounded-xl bg-slate-800/80 border border-white/10 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-teal-500 transition-colors"
+                className="w-full pl-9 pr-4 py-2.5 rounded-xl bg-[var(--surface-1)] border border-[var(--border)] text-xs text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none focus:border-teal-500 transition-colors"
               />
 
               {catalogQuery.trim() && (
-                <div className="absolute top-full left-0 right-0 mt-1 p-2 rounded-xl bg-slate-800 border border-white/10 shadow-2xl z-20 flex flex-col gap-1">
+                <div className="absolute top-full left-0 right-0 mt-1 p-2 rounded-xl bg-[var(--surface-0)] border border-[var(--border)] shadow-2xl z-20 flex flex-col gap-1">
                   {['Amoxicillin 500 mg', 'Cetirizine 10 mg', 'Azithromycin 500 mg', 'Ibuprofen 400 mg']
                     .filter((m) => m.toLowerCase().includes(catalogQuery.toLowerCase()))
                     .map((item) => (
                       <button
                         key={item}
                         onClick={() => addMedicineByName(item)}
-                        className="text-left px-3 py-1.5 rounded-lg hover:bg-teal-500/20 text-xs font-semibold text-slate-200 flex items-center justify-between"
+                        className="text-left px-3 py-1.5 rounded-lg hover:bg-teal-500/10 text-xs font-semibold text-[var(--text-primary)] flex items-center justify-between"
                       >
                         <span>{item}</span>
-                        <span className="text-[10px] text-teal-400">+ Add</span>
+                        <span className="text-[10px] text-teal-600 dark:text-teal-400">+ Add</span>
                       </button>
                     ))}
                   <button
                     onClick={() => addMedicineByName(catalogQuery.trim())}
-                    className="text-left px-3 py-1.5 rounded-lg hover:bg-teal-500/20 text-xs font-bold text-teal-400 flex items-center gap-1.5 border-t border-white/5 pt-2"
+                    className="text-left px-3 py-1.5 rounded-lg hover:bg-teal-500/10 text-xs font-bold text-teal-600 dark:text-teal-400 flex items-center gap-1.5 border-t border-[var(--border)] pt-2"
                   >
                     <Plus size={13} /> Add &quot;{catalogQuery.trim()}&quot; as custom drug
                   </button>
@@ -450,7 +450,7 @@ export default function InteractiveRxSandbox({ appSignupUrl }: { appSignupUrl: s
             </div>
 
             {/* Prescription Table Columns */}
-            <div className="grid grid-cols-12 gap-2 text-[10px] uppercase font-bold text-slate-400 tracking-wider px-1">
+            <div className="grid grid-cols-12 gap-2 text-[10px] uppercase font-bold text-[var(--text-muted)] tracking-wider px-1">
               <div className="col-span-4">MEDICINE</div>
               <div className="col-span-3">DOSE</div>
               <div className="col-span-2">DURATION</div>
@@ -466,7 +466,7 @@ export default function InteractiveRxSandbox({ appSignupUrl }: { appSignupUrl: s
                 return (
                   <div
                     key={row.id}
-                    className="p-3 rounded-xl bg-slate-800/60 border border-white/10 flex flex-col gap-2 relative transition-all"
+                    className="p-3 rounded-xl bg-[var(--surface-1)] border border-[var(--border)] flex flex-col gap-2 relative transition-all"
                   >
                     <div className="grid grid-cols-12 gap-2 items-center">
                       {/* MEDICINE Name Input */}
@@ -475,7 +475,7 @@ export default function InteractiveRxSandbox({ appSignupUrl }: { appSignupUrl: s
                           type="text"
                           value={row.name}
                           onChange={(e) => updateRow(row.id, { name: e.target.value })}
-                          className="w-full px-2.5 py-2 rounded-lg bg-slate-900 border border-white/10 text-xs text-white font-semibold focus:outline-none focus:border-teal-500 truncate"
+                          className="w-full px-2.5 py-2 rounded-lg bg-[var(--surface-0)] border border-[var(--border)] text-xs text-[var(--text-primary)] font-semibold focus:outline-none focus:border-teal-500 truncate"
                         />
                       </div>
 
@@ -488,15 +488,15 @@ export default function InteractiveRxSandbox({ appSignupUrl }: { appSignupUrl: s
                           }
                           className={`w-full px-2.5 py-2 rounded-lg text-xs font-semibold flex items-center justify-between border transition-all text-left ${
                             isDoseOpen
-                              ? 'border-teal-500 bg-teal-500/10 text-teal-300 ring-2 ring-teal-500/20'
-                              : 'border-white/10 bg-slate-900 text-slate-200 hover:border-white/20'
+                              ? 'border-teal-500 bg-teal-500/10 text-teal-700 dark:text-teal-300 ring-2 ring-teal-500/20'
+                              : 'border-[var(--border)] bg-[var(--surface-0)] text-[var(--text-primary)] hover:border-teal-500/50'
                           }`}
                         >
                           <span className="flex items-center gap-1.5 truncate">
-                            <Clock size={12} className="text-teal-400 flex-shrink-0" />
+                            <Clock size={12} className="text-teal-600 dark:text-teal-400 flex-shrink-0" />
                             <span className="truncate">{getDoseDisplay(row, 'en')}</span>
                           </span>
-                          <ChevronDown size={12} className="text-slate-400 ml-1 flex-shrink-0" />
+                          <ChevronDown size={12} className="text-[var(--text-muted)] ml-1 flex-shrink-0" />
                         </button>
                       </div>
 
@@ -505,10 +505,10 @@ export default function InteractiveRxSandbox({ appSignupUrl }: { appSignupUrl: s
                         <select
                           value={row.duration}
                           onChange={(e) => updateRow(row.id, { duration: e.target.value })}
-                          className="w-full px-2 py-2 rounded-lg bg-slate-900 border border-white/10 text-xs text-white font-medium focus:outline-none focus:border-teal-500 cursor-pointer"
+                          className="w-full px-2 py-2 rounded-lg bg-[var(--surface-0)] border border-[var(--border)] text-xs text-[var(--text-primary)] font-medium focus:outline-none focus:border-teal-500 cursor-pointer"
                         >
                           {DURATION_OPTIONS.map((dur) => (
-                            <option key={dur} value={dur} className="bg-slate-900 text-white">
+                            <option key={dur} value={dur} className="bg-[var(--surface-0)] text-[var(--text-primary)]">
                               {dur}
                             </option>
                           ))}
@@ -524,8 +524,8 @@ export default function InteractiveRxSandbox({ appSignupUrl }: { appSignupUrl: s
                           }
                           className={`w-full px-2.5 py-2 rounded-lg text-xs font-semibold flex items-center justify-between border transition-all text-left ${
                             isInstrOpen
-                              ? 'border-teal-500 bg-teal-500/10 text-teal-300 ring-2 ring-teal-500/20'
-                              : 'border-white/10 bg-slate-900 text-slate-200 hover:border-white/20'
+                              ? 'border-teal-500 bg-teal-500/10 text-teal-700 dark:text-teal-300 ring-2 ring-teal-500/20'
+                              : 'border-[var(--border)] bg-[var(--surface-0)] text-[var(--text-primary)] hover:border-teal-500/50'
                           }`}
                         >
                           <span className="truncate">
@@ -533,7 +533,7 @@ export default function InteractiveRxSandbox({ appSignupUrl }: { appSignupUrl: s
                               ? `${row.selectedInstructionKeys.length} selected`
                               : 'Select Instructions...'}
                           </span>
-                          <ChevronDown size={12} className="text-slate-400 ml-1 flex-shrink-0" />
+                          <ChevronDown size={12} className="text-[var(--text-muted)] ml-1 flex-shrink-0" />
                         </button>
                       </div>
                     </div>
@@ -544,7 +544,7 @@ export default function InteractiveRxSandbox({ appSignupUrl }: { appSignupUrl: s
                         type="button"
                         onClick={() => removeRow(row.id)}
                         disabled={medRows.length <= 1}
-                        className="text-[11px] text-rose-400 hover:text-rose-300 disabled:opacity-30 flex items-center gap-1 font-semibold transition-colors"
+                        className="text-[11px] text-rose-500 hover:text-rose-600 disabled:opacity-30 flex items-center gap-1 font-semibold transition-colors"
                       >
                         <Trash2 size={12} /> Remove Medicine
                       </button>
@@ -552,10 +552,10 @@ export default function InteractiveRxSandbox({ appSignupUrl }: { appSignupUrl: s
 
                     {/* ─── REAL HCMS DOSE POPOVER (MATCHES SCREENSHOT 1) ─── */}
                     {isDoseOpen && (
-                      <div className="absolute top-full left-0 mt-2 z-50 w-full max-w-[340px] rounded-2xl bg-slate-950/95 border border-teal-500/40 p-4 shadow-2xl backdrop-blur-2xl flex flex-col gap-3 text-slate-100">
+                      <div className="absolute top-full left-0 mt-2 z-50 w-full max-w-[340px] rounded-2xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-teal-500/40 p-4 shadow-2xl backdrop-blur-2xl flex flex-col gap-3 text-slate-900 dark:text-slate-100">
                         {/* 1. Daily Slots Frequency */}
                         <div>
-                          <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">
+                          <div className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">
                             1. DAILY SLOTS FREQUENCY
                           </div>
 
@@ -567,15 +567,15 @@ export default function InteractiveRxSandbox({ appSignupUrl }: { appSignupUrl: s
                               }}
                               className={`p-2.5 rounded-xl border flex flex-col items-center justify-center gap-1 cursor-pointer transition-all ${
                                 row.morning && !row.specialType
-                                  ? 'bg-teal-500/20 border-teal-500 text-teal-300 ring-1 ring-teal-500/40'
-                                  : 'bg-slate-900 border-white/10 text-slate-400 hover:bg-white/5'
+                                  ? 'bg-teal-500/15 dark:bg-teal-500/20 border-teal-500 text-teal-800 dark:text-teal-300 ring-1 ring-teal-500/40'
+                                  : 'bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5'
                               }`}
                             >
-                              <Sunrise size={16} className={row.morning && !row.specialType ? 'text-teal-400' : 'text-slate-400'} />
+                              <Sunrise size={16} className={row.morning && !row.specialType ? 'text-teal-600 dark:text-teal-400' : 'text-slate-400'} />
                               <span className="text-[9px] font-bold uppercase tracking-wider">MORNING</span>
                               <span
                                 className={`text-[10px] font-bold px-2 py-0.5 rounded ${
-                                  row.morning && !row.specialType ? 'bg-teal-500 text-white' : 'bg-slate-800 text-slate-400'
+                                  row.morning && !row.specialType ? 'bg-teal-500 text-white' : 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-400'
                                 }`}
                               >
                                 {row.morning && !row.specialType ? '1 Dose' : 'Off'}
@@ -589,15 +589,15 @@ export default function InteractiveRxSandbox({ appSignupUrl }: { appSignupUrl: s
                               }}
                               className={`p-2.5 rounded-xl border flex flex-col items-center justify-center gap-1 cursor-pointer transition-all ${
                                 row.afternoon && !row.specialType
-                                  ? 'bg-teal-500/20 border-teal-500 text-teal-300 ring-1 ring-teal-500/40'
-                                  : 'bg-slate-900 border-white/10 text-slate-400 hover:bg-white/5'
+                                  ? 'bg-teal-500/15 dark:bg-teal-500/20 border-teal-500 text-teal-800 dark:text-teal-300 ring-1 ring-teal-500/40'
+                                  : 'bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5'
                               }`}
                             >
-                              <Sun size={16} className={row.afternoon && !row.specialType ? 'text-teal-400' : 'text-slate-400'} />
+                              <Sun size={16} className={row.afternoon && !row.specialType ? 'text-teal-600 dark:text-teal-400' : 'text-slate-400'} />
                               <span className="text-[9px] font-bold uppercase tracking-wider">AFTERNOON</span>
                               <span
                                 className={`text-[10px] font-bold px-2 py-0.5 rounded ${
-                                  row.afternoon && !row.specialType ? 'bg-teal-500 text-white' : 'bg-slate-800 text-slate-400'
+                                  row.afternoon && !row.specialType ? 'bg-teal-500 text-white' : 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-400'
                                 }`}
                               >
                                 {row.afternoon && !row.specialType ? '1 Dose' : 'Off'}
@@ -611,15 +611,15 @@ export default function InteractiveRxSandbox({ appSignupUrl }: { appSignupUrl: s
                               }}
                               className={`p-2.5 rounded-xl border flex flex-col items-center justify-center gap-1 cursor-pointer transition-all ${
                                 row.night && !row.specialType
-                                  ? 'bg-teal-500/20 border-teal-500 text-teal-300 ring-1 ring-teal-500/40'
-                                  : 'bg-slate-900 border-white/10 text-slate-400 hover:bg-white/5'
+                                  ? 'bg-teal-500/15 dark:bg-teal-500/20 border-teal-500 text-teal-800 dark:text-teal-300 ring-1 ring-teal-500/40'
+                                  : 'bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5'
                               }`}
                             >
-                              <Moon size={16} className={row.night && !row.specialType ? 'text-teal-400' : 'text-slate-400'} />
+                              <Moon size={16} className={row.night && !row.specialType ? 'text-teal-600 dark:text-teal-400' : 'text-slate-400'} />
                               <span className="text-[9px] font-bold uppercase tracking-wider">NIGHT</span>
                               <span
                                 className={`text-[10px] font-bold px-2 py-0.5 rounded ${
-                                  row.night && !row.specialType ? 'bg-teal-500 text-white' : 'bg-slate-800 text-slate-400'
+                                  row.night && !row.specialType ? 'bg-teal-500 text-white' : 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-400'
                                 }`}
                               >
                                 {row.night && !row.specialType ? '1 Dose' : 'Off'}
@@ -630,7 +630,7 @@ export default function InteractiveRxSandbox({ appSignupUrl }: { appSignupUrl: s
 
                         {/* SOS & Special Types */}
                         <div>
-                          <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">
+                          <div className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">
                             SOS & SPECIAL TYPES
                           </div>
 
@@ -648,8 +648,8 @@ export default function InteractiveRxSandbox({ appSignupUrl }: { appSignupUrl: s
                                 }}
                                 className={`p-2 rounded-lg text-left text-[11px] font-semibold flex items-center gap-1.5 border transition-all ${
                                   row.specialType === spec.value
-                                    ? 'bg-teal-500/20 border-teal-500 text-white'
-                                    : 'bg-slate-900 border-white/5 text-slate-300 hover:bg-white/5'
+                                    ? 'bg-teal-500/20 border-teal-500 text-teal-900 dark:text-white'
+                                    : 'bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-white/5 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/5'
                                 }`}
                               >
                                 {spec.icon}
@@ -660,30 +660,30 @@ export default function InteractiveRxSandbox({ appSignupUrl }: { appSignupUrl: s
                         </div>
 
                         {/* 2. Dosage Measure & Type */}
-                        <div className="pt-2 border-t border-white/10">
-                          <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">
+                        <div className="pt-2 border-t border-slate-200 dark:border-white/10">
+                          <div className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">
                             2. DOSAGE MEASURE & TYPE
                           </div>
 
                           <div className="grid grid-cols-2 gap-2 mb-2">
                             <div>
-                              <label className="text-[9px] text-slate-400 block mb-0.5">Amount</label>
+                              <label className="text-[9px] text-slate-500 dark:text-slate-400 block mb-0.5">Amount</label>
                               <input
                                 type="text"
                                 placeholder="e.g. 2, 5, 1"
                                 value={row.amount}
                                 onChange={(e) => updateRow(row.id, { amount: e.target.value })}
-                                className="w-full px-2 py-1.5 rounded-lg bg-slate-900 border border-white/10 text-xs text-white"
+                                className="w-full px-2 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-white/10 text-xs text-slate-900 dark:text-white"
                               />
                             </div>
                             <div>
-                              <label className="text-[9px] text-slate-400 block mb-0.5">Type of dosage</label>
+                              <label className="text-[9px] text-slate-500 dark:text-slate-400 block mb-0.5">Type of dosage</label>
                               <input
                                 type="text"
                                 placeholder="e.g. drops, mL"
                                 value={row.unitType}
                                 onChange={(e) => updateRow(row.id, { unitType: e.target.value })}
-                                className="w-full px-2 py-1.5 rounded-lg bg-slate-900 border border-white/10 text-xs text-white"
+                                className="w-full px-2 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-white/10 text-xs text-slate-900 dark:text-white"
                               />
                             </div>
                           </div>
@@ -696,7 +696,7 @@ export default function InteractiveRxSandbox({ appSignupUrl }: { appSignupUrl: s
                                 className={`px-2 py-0.5 rounded text-[10px] font-medium transition-all ${
                                   row.unitType === unit
                                     ? 'bg-teal-500 text-white font-bold'
-                                    : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                                    : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
                                 }`}
                               >
                                 {unit}
@@ -706,7 +706,7 @@ export default function InteractiveRxSandbox({ appSignupUrl }: { appSignupUrl: s
                         </div>
 
                         {/* Popover Bottom Actions */}
-                        <div className="flex items-center justify-between pt-2 border-t border-white/10">
+                        <div className="flex items-center justify-between pt-2 border-t border-slate-200 dark:border-white/10">
                           <button
                             onClick={() => {
                               updateRow(row.id, {
@@ -717,7 +717,7 @@ export default function InteractiveRxSandbox({ appSignupUrl }: { appSignupUrl: s
                                 amount: '',
                               });
                             }}
-                            className="text-xs text-slate-400 hover:text-white flex items-center gap-1 font-semibold"
+                            className="text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1 font-semibold"
                           >
                             <RotateCcw size={12} /> Clear / Reset
                           </button>
@@ -733,11 +733,11 @@ export default function InteractiveRxSandbox({ appSignupUrl }: { appSignupUrl: s
 
                     {/* ─── REAL HCMS INSTRUCTIONS POPOVER (MATCHES SCREENSHOT 2) ─── */}
                     {isInstrOpen && (
-                      <div className="absolute top-full left-0 mt-2 z-50 w-full max-w-[380px] rounded-2xl bg-slate-950/95 border border-teal-500/40 p-4 shadow-2xl backdrop-blur-2xl flex flex-col gap-3 text-slate-100">
+                      <div className="absolute top-full left-0 mt-2 z-50 w-full max-w-[380px] rounded-2xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-teal-500/40 p-4 shadow-2xl backdrop-blur-2xl flex flex-col gap-3 text-slate-900 dark:text-slate-100">
                         {/* Header: Print Language Toggle */}
-                        <div className="flex items-center justify-between pb-2 border-b border-white/10">
-                          <span className="text-xs font-semibold text-slate-300 flex items-center gap-1.5">
-                            <Languages size={14} className="text-teal-400" /> Print Language:
+                        <div className="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-white/10">
+                          <span className="text-xs font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
+                            <Languages size={14} className="text-teal-600 dark:text-teal-400" /> Print Language:
                           </span>
                           <div className="flex items-center gap-1">
                             {(['en', 'hi', 'mr'] as const).map((lang) => (
@@ -747,7 +747,7 @@ export default function InteractiveRxSandbox({ appSignupUrl }: { appSignupUrl: s
                                 className={`px-2.5 py-1 rounded text-xs font-bold transition-all ${
                                   activePrintLang === lang
                                     ? 'bg-teal-500 text-slate-950 shadow-sm'
-                                    : 'bg-slate-800 text-slate-400 hover:text-white'
+                                    : 'bg-slate-150 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                                 }`}
                               >
                                 {lang === 'en' ? 'English' : lang === 'hi' ? 'हिंदी' : 'मराठी'}
@@ -764,7 +764,7 @@ export default function InteractiveRxSandbox({ appSignupUrl }: { appSignupUrl: s
                             placeholder="Search instructions (e.g. food, water, bedtime)"
                             value={instructionSearch}
                             onChange={(e) => setInstructionSearch(e.target.value)}
-                            className="w-full pl-8 pr-3 py-1.5 rounded-lg bg-slate-900 border border-white/10 text-xs text-white placeholder-slate-500 focus:outline-none"
+                            className="w-full pl-8 pr-3 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-white/10 text-xs text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none"
                           />
                         </div>
 
@@ -787,21 +787,21 @@ export default function InteractiveRxSandbox({ appSignupUrl }: { appSignupUrl: s
                                   updateRow(row.id, { selectedInstructionKeys: next });
                                 }}
                                 className={`p-2 rounded-lg flex items-center gap-2.5 cursor-pointer text-xs transition-colors ${
-                                  isChecked ? 'bg-teal-500/20 text-white' : 'hover:bg-white/5 text-slate-300'
+                                  isChecked ? 'bg-teal-500/15 dark:bg-teal-500/20 text-teal-900 dark:text-white' : 'hover:bg-slate-100 dark:hover:bg-white/5 text-slate-700 dark:text-slate-300'
                                 }`}
                               >
                                 <div
                                   className={`w-4 h-4 rounded border flex items-center justify-center flex-shrink-0 ${
                                     isChecked
                                       ? 'bg-teal-500 border-teal-500 text-slate-950'
-                                      : 'border-slate-500'
+                                      : 'border-slate-400'
                                   }`}
                                 >
                                   {isChecked && <Check size={11} />}
                                 </div>
                                 <span className="leading-tight">
                                   {item[activePrintLang]}
-                                  <span className="text-[10px] text-slate-400 ml-1.5">
+                                  <span className="text-[10px] text-slate-500 dark:text-slate-400 ml-1.5">
                                     / {activePrintLang === 'en' ? item.hi : item.en}
                                   </span>
                                 </span>
@@ -811,8 +811,8 @@ export default function InteractiveRxSandbox({ appSignupUrl }: { appSignupUrl: s
                         </div>
 
                         {/* Custom Instruction Textarea */}
-                        <div className="pt-2 border-t border-white/10">
-                          <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">
+                        <div className="pt-2 border-t border-slate-200 dark:border-white/10">
+                          <label className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider block mb-1">
                             Custom Instruction (Optional)
                           </label>
                           <textarea
@@ -820,7 +820,7 @@ export default function InteractiveRxSandbox({ appSignupUrl }: { appSignupUrl: s
                             placeholder="e.g. Avoid direct sunlight and dairy products"
                             value={row.customInstruction}
                             onChange={(e) => updateRow(row.id, { customInstruction: e.target.value })}
-                            className="w-full p-2 rounded-lg bg-slate-900 border border-white/10 text-xs text-white placeholder-slate-500 focus:outline-none"
+                            className="w-full p-2 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-white/10 text-xs text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none"
                           />
                         </div>
 
@@ -976,15 +976,15 @@ export default function InteractiveRxSandbox({ appSignupUrl }: { appSignupUrl: s
             <div className="flex items-center gap-2">
               <button
                 onClick={handleSimulatePrint}
-                className="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold flex items-center gap-1.5 border border-white/10 transition-all"
+                className="px-3.5 py-2 rounded-xl bg-[var(--surface-1)] hover:bg-[var(--surface-2)] text-[var(--text-primary)] text-xs font-bold flex items-center gap-1.5 border border-[var(--border)] transition-all shadow-sm"
               >
-                <Printer size={13} className="text-teal-400" />
+                <Printer size={13} className="text-teal-600 dark:text-teal-400" />
                 <span>{printed ? 'Sent to Printer!' : 'Print A4 / Thermal'}</span>
               </button>
 
               <button
                 onClick={handleShareWhatsApp}
-                className="px-3.5 py-2 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-300 text-xs font-bold flex items-center gap-1.5 border border-emerald-500/30 transition-all"
+                className="px-3.5 py-2 rounded-xl bg-emerald-600/10 hover:bg-emerald-600/20 text-emerald-700 dark:text-emerald-300 text-xs font-bold flex items-center gap-1.5 border border-emerald-500/30 transition-all shadow-sm"
               >
                 <Share2 size={13} />
                 <span>{copied ? 'Copied Rx Link!' : 'Share WhatsApp Rx'}</span>
@@ -993,7 +993,7 @@ export default function InteractiveRxSandbox({ appSignupUrl }: { appSignupUrl: s
 
             <a
               href={appSignupUrl}
-              className="text-xs font-bold text-teal-400 hover:text-teal-300 flex items-center gap-1 transition-colors"
+              className="text-xs font-bold text-teal-600 dark:text-teal-400 hover:underline flex items-center gap-1 transition-colors"
             >
               <span>Activate Full Clinic Suite</span>
               <span>→</span>

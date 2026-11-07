@@ -12,7 +12,6 @@ import {
   FileCheck2,
   Sparkles,
   ArrowRight,
-  Maximize2,
 } from 'lucide-react';
 
 interface WorkflowStep {
@@ -106,10 +105,10 @@ export default function InteractiveWorkflowExplorer({ appSignupUrl }: { appSignu
   const currentStep = steps[activeStepIndex] || steps[0];
 
   return (
-    <div id="workflows" className="w-full max-w-6xl mx-auto py-12 px-4 text-slate-100">
+    <div id="workflows" className="w-full max-w-6xl mx-auto py-12 px-4 text-[var(--text-primary)] font-sans">
       {/* Header & Mode Switcher */}
       <div className="flex flex-col items-center text-center mb-10">
-        <div className="inline-flex items-center gap-1.5 p-1.5 rounded-2xl bg-slate-900 border border-teal-500/30 backdrop-blur-xl shadow-xl shadow-teal-500/10 mb-4">
+        <div className="inline-flex items-center gap-1.5 p-1.5 rounded-2xl bg-[var(--surface-1)] border border-[var(--border)] backdrop-blur-xl shadow-lg mb-4">
           <button
             onClick={() => {
               setActiveTab('opd');
@@ -118,7 +117,7 @@ export default function InteractiveWorkflowExplorer({ appSignupUrl }: { appSignu
             className={`px-6 py-2.5 rounded-xl text-xs md:text-sm font-bold flex items-center gap-2 transition-all ${
               activeTab === 'opd'
                 ? 'bg-gradient-to-r from-teal-600 to-teal-500 text-white shadow-lg shadow-teal-500/30'
-                : 'text-slate-400 hover:text-white'
+                : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
             }`}
           >
             <Stethoscope size={16} /> Outpatient Clinic (OPD Workflow)
@@ -132,19 +131,19 @@ export default function InteractiveWorkflowExplorer({ appSignupUrl }: { appSignu
             className={`px-6 py-2.5 rounded-xl text-xs md:text-sm font-bold flex items-center gap-2 transition-all ${
               activeTab === 'ipd'
                 ? 'bg-gradient-to-r from-teal-600 to-teal-500 text-white shadow-lg shadow-teal-500/30'
-                : 'text-slate-400 hover:text-white'
+                : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
             }`}
           >
             <Bed size={16} /> Inpatient Hospital (IPD Stay Journey)
           </button>
         </div>
 
-        <h2 className="text-2xl md:text-4xl font-black text-white tracking-tight">
+        <h2 className="text-2xl md:text-4xl font-black text-[var(--text-primary)] tracking-tight font-display">
           {activeTab === 'opd'
             ? 'From Patient Registration to Follow-Up'
             : 'From Bed Allocation through Discharge Settlement'}
         </h2>
-        <p className="text-xs md:text-sm text-slate-400 max-w-xl mt-2">
+        <p className="text-xs md:text-sm text-[var(--text-secondary)] max-w-xl mt-2">
           Experience real screens captured directly from HCMS. Click through each step to explore the operational journey.
         </p>
       </div>
@@ -159,22 +158,22 @@ export default function InteractiveWorkflowExplorer({ appSignupUrl }: { appSignu
               onClick={() => setActiveStepIndex(idx)}
               className={`p-4 rounded-2xl border text-left transition-all relative overflow-hidden flex flex-col justify-between ${
                 isSelected
-                  ? 'bg-slate-900 border-teal-500 shadow-xl shadow-teal-500/15'
-                  : 'bg-slate-900/40 border-white/10 hover:border-white/20'
+                  ? 'bg-[var(--surface-0)] border-teal-500 shadow-xl shadow-teal-500/10'
+                  : 'bg-[var(--card-bg)] border-[var(--card-border)] hover:border-teal-500/30'
               }`}
             >
               {isSelected && (
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-400 to-emerald-400" />
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-500 to-emerald-400" />
               )}
               <div className="flex items-center justify-between mb-2">
-                <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-white/10 text-teal-400">
+                <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-teal-500/10 text-teal-600 dark:text-teal-400 border border-teal-500/20">
                   {s.badge}
                 </span>
-                <span className={`text-xs font-mono font-bold ${isSelected ? 'text-teal-400' : 'text-slate-500'}`}>
+                <span className={`text-xs font-mono font-bold ${isSelected ? 'text-teal-600 dark:text-teal-400' : 'text-[var(--text-muted)]'}`}>
                   STEP {s.number}
                 </span>
               </div>
-              <div className="font-bold text-sm text-white">{s.title}</div>
+              <div className="font-bold text-sm text-[var(--text-primary)]">{s.title}</div>
             </button>
           );
         })}
@@ -188,26 +187,26 @@ export default function InteractiveWorkflowExplorer({ appSignupUrl }: { appSignu
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -15 }}
           transition={{ duration: 0.25 }}
-          className="rounded-3xl p-6 md:p-8 bg-slate-900/90 border border-white/10 backdrop-blur-2xl shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+          className="rounded-3xl p-6 md:p-8 bg-[var(--card-bg)] border border-[var(--card-border)] backdrop-blur-2xl shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
         >
           {/* Left Text / Checklist */}
           <div className="lg:col-span-5 text-left flex flex-col gap-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/10 text-teal-400 text-xs font-semibold w-fit border border-teal-500/20">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/10 text-teal-600 dark:text-teal-400 text-xs font-semibold w-fit border border-teal-500/20">
               <Sparkles size={13} /> {currentStep.badge}
             </div>
 
-            <h3 className="text-xl md:text-2xl font-black text-white">
+            <h3 className="text-xl md:text-2xl font-black text-[var(--text-primary)] font-display">
               {currentStep.title}
             </h3>
 
-            <p className="text-xs md:text-sm text-slate-300 leading-relaxed">
+            <p className="text-xs md:text-sm text-[var(--text-secondary)] leading-relaxed">
               {currentStep.detail}
             </p>
 
             <div className="space-y-2 mt-2">
               {currentStep.points.map((pt, i) => (
-                <div key={i} className="flex items-center gap-2.5 text-xs text-slate-200">
-                  <CheckCircle2 size={15} className="text-teal-400 flex-shrink-0" />
+                <div key={i} className="flex items-center gap-2.5 text-xs text-[var(--text-primary)]">
+                  <CheckCircle2 size={15} className="text-teal-600 dark:text-teal-400 flex-shrink-0" />
                   <span>{pt}</span>
                 </div>
               ))}
@@ -227,15 +226,15 @@ export default function InteractiveWorkflowExplorer({ appSignupUrl }: { appSignu
           {/* Right Real HCMS Screen Mockup */}
           <div className="lg:col-span-7">
             {currentStep.image ? (
-              <div className="rounded-2xl overflow-hidden bg-slate-950 border border-slate-700/80 shadow-2xl shadow-teal-500/10">
+              <div className="rounded-2xl overflow-hidden bg-slate-900 border border-[var(--border)] shadow-2xl">
                 {/* Browser Top Bar */}
-                <div className="h-8 bg-slate-900 border-b border-white/10 px-4 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+                <div className="h-8 bg-slate-800 dark:bg-slate-950 border-b border-white/10 px-4 flex items-center justify-between text-[11px] text-slate-300 font-mono">
                   <div className="flex items-center gap-1.5">
                     <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
                     <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
                     <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
                   </div>
-                  <span className="text-slate-400">hcms.askitstudio.in</span>
+                  <span className="text-slate-300">hcms.askitstudio.in</span>
                   <span className="text-[10px] text-teal-400 font-bold flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse" />
                     AUTHENTIC SCREEN
@@ -249,28 +248,28 @@ export default function InteractiveWorkflowExplorer({ appSignupUrl }: { appSignu
                     alt={currentStep.alt || currentStep.title}
                     className="w-full h-auto object-cover max-h-[380px] group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-slate-950/95 via-slate-950/70 to-transparent flex items-center justify-between text-[11px] text-slate-300">
+                  <div className="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-slate-950/95 via-slate-950/70 to-transparent flex items-center justify-between text-[11px] text-white">
                     <span className="font-mono font-bold text-teal-300">{currentStep.caption}</span>
-                    <span className="text-slate-400">Captured from HCMS Production</span>
+                    <span className="text-slate-300">Captured from HCMS Production</span>
                   </div>
                 </div>
               </div>
             ) : (
               /* Fallback rich visual card for summary step */
-              <div className="rounded-2xl p-8 bg-gradient-to-br from-slate-900 to-teal-950/50 border border-teal-500/30 text-left flex flex-col justify-between min-h-[320px]">
+              <div className="rounded-2xl p-8 bg-[var(--surface-1)] border border-teal-500/30 text-left flex flex-col justify-between min-h-[320px] shadow-sm">
                 <div>
-                  <div className="w-14 h-14 rounded-2xl bg-teal-500/20 text-teal-400 flex items-center justify-center mb-5 border border-teal-500/30 text-xl font-serif font-black italic">
+                  <div className="w-14 h-14 rounded-2xl bg-teal-500/10 text-teal-600 dark:text-teal-400 flex items-center justify-center mb-5 border border-teal-500/30 text-xl font-serif font-black italic">
                     Rx
                   </div>
-                  <h4 className="text-xl font-black text-white mb-2">Connected Clinical Workflow</h4>
-                  <p className="text-xs text-slate-300 leading-relaxed max-w-md">
+                  <h4 className="text-xl font-black text-[var(--text-primary)] mb-2">Connected Clinical Workflow</h4>
+                  <p className="text-xs text-[var(--text-secondary)] leading-relaxed max-w-md">
                     Every piece of patient data — past visits, recurring symptoms, medicine allergies, and running hospital invoices — is permanently unified into a single electronic health record.
                   </p>
                 </div>
 
-                <div className="pt-6 border-t border-white/10 flex items-center justify-between text-xs text-slate-400 font-mono">
+                <div className="pt-6 border-t border-[var(--border)] flex items-center justify-between text-xs text-[var(--text-muted)] font-mono">
                   <span>Zero Data Fragmentation</span>
-                  <span className="text-teal-400 font-bold">100% HIPAA & DPDP Compliant</span>
+                  <span className="text-teal-600 dark:text-teal-400 font-bold">100% HIPAA & DPDP Compliant</span>
                 </div>
               </div>
             )}
@@ -280,4 +279,3 @@ export default function InteractiveWorkflowExplorer({ appSignupUrl }: { appSignu
     </div>
   );
 }
-
