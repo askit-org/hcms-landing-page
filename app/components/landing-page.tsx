@@ -93,21 +93,18 @@ export default function LandingPage() {
       <header className="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 py-3.5 backdrop-blur-xl bg-[var(--header-bg)] border-b border-[var(--border)] transition-all">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Brand Logo */}
-          <a href="#top" className="flex items-center gap-3 group text-decoration-none">
-            <div className="w-10 h-10 rounded-xl overflow-hidden bg-gradient-to-tr from-teal-500 to-emerald-400 p-0.5 shadow-lg shadow-teal-500/20 group-hover:scale-105 transition-transform">
+          <a href="#top" className="logo-row group text-decoration-none">
+            <div className="logo-icon group-hover:scale-105">
               <img
                 src="/icons/logo.png"
                 alt="HCMS Logo"
-                width={40}
-                height={40}
-                className="w-full h-full object-cover rounded-[10px]"
+                width={38}
+                height={38}
               />
             </div>
-            <div className="text-left">
-              <span className="text-base font-black tracking-tight text-[var(--text-primary)] flex items-center gap-1.5 font-display">
-                HCMS <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-teal-500/15 text-teal-500 border border-teal-500/30">PRO</span>
-              </span>
-              <span className="block text-[10px] text-[var(--text-muted)] font-medium">Hospital & Clinic Suite</span>
+            <div className="logo-text text-left">
+              <h2>HCMS</h2>
+              <p>Clinic Management</p>
             </div>
           </a>
 
@@ -492,12 +489,20 @@ export default function LandingPage() {
       <footer className="w-full bg-[var(--surface-0)] border-t border-[var(--border)] text-[var(--text-muted)] text-xs py-14 px-4 md:px-8">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 mb-12 text-left">
           <div className="md:col-span-1">
-            <div className="flex items-center gap-2.5 mb-3">
-              <div className="w-8 h-8 rounded-lg overflow-hidden bg-teal-500/20 p-0.5 border border-teal-500/30">
-                <img src="/icons/logo.png" alt="HCMS Logo" width={32} height={32} className="w-full h-full object-cover rounded-md" />
+            <a href="#top" className="logo-row mb-4 text-decoration-none inline-flex">
+              <div className="logo-icon">
+                <img
+                  src="/icons/logo.png"
+                  alt="HCMS Logo"
+                  width={38}
+                  height={38}
+                />
               </div>
-              <span className="text-base font-black text-[var(--text-primary)] tracking-tight font-display">HCMS</span>
-            </div>
+              <div className="logo-text text-left">
+                <h2>HCMS</h2>
+                <p>Clinic Management</p>
+              </div>
+            </a>
             <p className="text-xs text-[var(--text-secondary)] leading-relaxed mb-4">
               Modern Hospital & Clinic Management System designed for outpatient consultations, inpatient stays, fast multi-lingual e-prescriptions, and zero-fee UPI billing.
             </p>
