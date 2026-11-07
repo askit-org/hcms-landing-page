@@ -746,7 +746,7 @@ export default function LandingPage() {
               <p>
                 Email:{" "}
                 <a
-                  href="mailto:support@askitstudio.com"
+                  href="mailto:contact@askitstudio.in"
                   className="text-teal-500 underline"
                 >
                   contact@askitstudio.in
